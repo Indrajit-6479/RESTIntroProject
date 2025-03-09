@@ -24,4 +24,9 @@ public class HomeController {
     public String pathVariable(@PathVariable String id) {
         return String.format("Path variable is: %s", id);
     }
+
+    @GetMapping("/{id}/{id2}")
+    public String pathVariable2(@PathVariable String id, @PathVariable("id2") String name) {
+        return String.format("Path variable id is %s and name is %s", id, name);
+    }
 }
