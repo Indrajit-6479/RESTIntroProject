@@ -29,4 +29,15 @@ public class HomeController {
     public String pathVariable2(@PathVariable String id, @PathVariable("id2") String name) {
         return String.format("Path variable id is %s and name is %s", id, name);
     }
+
+    @GetMapping("/requestParam")
+    public String requestParam(@RequestParam String name) {
+        return String.format("Request param name is %s", name);
+    }
+
+    @GetMapping("/requestParam1")
+    public String requestParam1(@RequestParam String name,
+                                @RequestParam(value = "emailId", required = false, defaultValue = "") String gmailId) {
+        return String.format("Request param name is %s and gmail id is %s", name, gmailId);
+    }
 }
