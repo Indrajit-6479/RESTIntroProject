@@ -9,14 +9,19 @@ import java.util.UUID;
 
 @Service
 public class EmployeeServiceImpl implements EmployeeService {
-    List<Employee> employeeList = new ArrayList<>();
+    List<Employee> employeesList = new ArrayList<>();
 
     @Override
     public Employee save(Employee employee) {
         if (employee.getEmployeeId() == null || employee.getEmployeeId().isEmpty()){
             employee.setEmployeeId(UUID.randomUUID().toString());
         }
-        employeeList.add(employee);
+        employeesList.add(employee);
         return employee;
+    }
+
+    @Override
+    public List<Employee> getAllEmployees() {
+        return employeesList;
     }
 }
