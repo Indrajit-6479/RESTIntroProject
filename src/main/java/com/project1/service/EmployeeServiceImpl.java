@@ -31,6 +31,20 @@ public class EmployeeServiceImpl implements EmployeeService {
     public Employee getEmployeeById(String id) {
         return employeesList.stream().filter(employee1 -> employee1.getEmployeeId().equalsIgnoreCase(id))
                 .findFirst()
-                .orElseThrow(() -> new EmployeeNotFoundException("Employee is not present for id " + id));
+                .orElseThrow(() -> new EmployeeNotFoundException("Employee is not present for id: " + id));
+    }
+
+    @Override
+    public String deleteEmployeeById(String id) {
+        Optional<Employee> employee = employeesList.stream().filter(employee1 -> {
+                    return employee1.getEmployeeId().equalsIgnoreCase(id);
+                })
+                .findAny();
+        if (employee.isPresent()) {
+            employeesList.remove(employee.get());
+            return String.format("Employee with id: %s is successfully deleted.", id);
+        } else {
+            throw new EmployeeNotFoundException("Employee is not present for id: " + id);
+        }
     }
 }
