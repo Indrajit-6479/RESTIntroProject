@@ -3,6 +3,7 @@ package com.project1.controller;
 import com.project1.model.User;
 import org.springframework.web.bind.annotation.*;
 
+@RequestMapping("/basic")
 @RestController
 public class HomeController {
     @RequestMapping("/")

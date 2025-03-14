@@ -8,11 +8,11 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+@RequestMapping("/employees/v2")
 @RestController
-@RequestMapping("/employees")
-public class EmployeeController {
+public class EmployeeV2Controller {
 
-    @Qualifier("employeeServiceImpl")
+    @Qualifier("employeeServiceV2Impl")
     @Autowired
     EmployeeService employeeService;
 
