@@ -56,8 +56,13 @@ public class EmployeeServiceV2Impl implements EmployeeService {
 
     @Override
     public String deleteEmployeeById(String id) {
-        dependencies.getEmployeeRepository().deleteById(id);
-        return String.format("Delete the employee with id %s in database", id);
+        Optional<EmployeeEntity> employee = dependencies.getEmployeeRepository().findById(id);
+        if (employee.isPresent()) {
+            dependencies.getEmployeeRepository().deleteById(id);
+            return String.format("Delete the employee with id %s in database", id);
+        } else {
+            throw new EmployeeNotFoundException("Employee is not found with id: " + id);
+        }
     }
 
     @Override
