@@ -35,4 +35,9 @@ public class EmployeeV2Controller {
     public String deleteEmployeeById(@PathVariable String id){
         return employeeService.deleteEmployeeById(id);
     }
+
+    @PutMapping()
+    public Employee updateEmployeeById(@RequestBody Employee employee){
+        return employeeService.updateEmployeeById(employee);
+    }
 }
